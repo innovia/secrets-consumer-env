@@ -45,22 +45,18 @@ The API calls are different paths and this tool automatically adjust the secret 
 
 Ways to use Vault secrets:
 
-1. you can use Vault with a secret path that contains a JSON
-2. you can use Vault paths as if they were a file system, one use case would be to have a path with secrets as subpaths, each secret name
-would be used as the key name and will contain a single value.
-the advantage of this approach is that you don't have to read, and append a value when you want to add or edit a value in it
+1. You can use Vault with a secret path that contains a JSON
+1. You can use Vault paths as if they were a file system, one use case would be to have a path with secrets as subpaths, each secret name would be used as the key name and will contain a single value. The advantage of this approach is that you don't have to read, and append a value when you want to add or edit a value in it. This tool will read all the sub paths from `/secret/some/path/` and you will need to use the `VAULT_USE_SECRET_NAMES_AS_KEYS=true` env var to make it work.
 
-```console
-/secret/some/path/
--- API_KEY
-    -- value: secret-api-key
--- DB_PASSWORD
-    -- value: 1234
-```
-
-this tool will read all the sub paths from `/secret/some/path/` and you will need to use the `VAULT_USE_SECRET_NAMES_AS_KEYS=true` env var to make it work.
-3. you can use vault paths as in the previous option, but if you use the env var `VAULT_USE_SECRET_NAMES_AS_KEYS=true` it will get all the secrets **key=values** from all the paths below the path `/secret/some/path/`
-4. you can choose which env var to export by using the following convention: `ENV_NAME_TO_BE_EXPORTED="secret:<SECRET_KEY>"`
+   ```console
+   /secret/some/path/
+   -- API_KEY
+       -- value: secret-api-key
+   -- DB_PASSWORD
+       -- value: 1234
+   ```
+1. You can use vault paths as in the previous option, but if you use the env var `VAULT_USE_SECRET_NAMES_AS_KEYS=true` it will get all the secrets **key=values** from all the paths below the path `/secret/some/path/`
+1. You can choose which env var to export by using the following convention: `ENV_NAME_TO_BE_EXPORTED="secret:<SECRET_KEY>"`
 
 ## How to use
 
