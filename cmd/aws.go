@@ -17,7 +17,7 @@ package cmd
 
 import (
 	awsSDK "github.com/aws/aws-sdk-go/aws"
-	aws "github.com/doitintl/secrets-consumer-env/pkg/aws"
+	aws "github.com/innovia/secrets-consumer-env/pkg/aws"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

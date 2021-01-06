@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/doitintl/secrets-consumer-env/pkg/vault"
+	"github.com/innovia/secrets-consumer-env/pkg/vault"
 	"github.com/sirupsen/logrus"
 	log "github.com/sirupsen/logrus"
 

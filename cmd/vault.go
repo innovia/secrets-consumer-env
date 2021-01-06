@@ -20,8 +20,8 @@ import (
 	"errors"
 	"strconv"
 
-	vault "github.com/doitintl/secrets-consumer-env/pkg/vault"
 	vaultapi "github.com/hashicorp/vault/api"
+	vault "github.com/innovia/secrets-consumer-env/pkg/vault"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

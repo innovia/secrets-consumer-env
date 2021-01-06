@@ -17,7 +17,7 @@ RUN go mod download
 
 COPY . /go/src/${PACKAGE}
 
-RUN go build -ldflags="-X github.com/doitintl/secrets-consumer-env/pkg/version.version=${VERSION} -X github.com/doitintl/secrets-consumer-env/pkg/version.gitCommitID=${COMMIT}"
+RUN go build -ldflags="-X github.com/innovia/secrets-consumer-env/pkg/version.version=${VERSION} -X github.com/innovia/secrets-consumer-env/pkg/version.gitCommitID=${COMMIT}"
 RUN cp secrets-consumer-env /usr/local/bin/
 RUN chmod a+x /usr/local/bin/secrets-consumer-env
 

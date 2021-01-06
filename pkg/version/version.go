@@ -1,9 +1,9 @@
 package version
 
-// version is a private field and should be set when compiling with --ldflags="-X github.com/doitintl/secrets-consumer-env/pkg/version.version=X.Y.Z"
+// version is a private field and should be set when compiling with --ldflags="-X github.com/innovia/secrets-consumer-env/pkg/version.version=X.Y.Z"
 var version = "0.0.0-unset"
 
-// gitCommitID is a private field and should be set when compiling with --ldflags="-X github.com/doitintl/secrets-consumer-env/pkg/version.gitCommitID=<commit-id>"
+// gitCommitID is a private field and should be set when compiling with --ldflags="-X github.com/innovia/secrets-consumer-env/pkg/version.gitCommitID=<commit-id>"
 var gitCommitID = ""
 
 // GetVersion returns the current version

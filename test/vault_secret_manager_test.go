@@ -3,8 +3,8 @@ package test
 import (
 	"testing"
 
-	vaultSecretsManager "github.com/doitintl/secrets-consumer-env/pkg/vault"
 	"github.com/google/go-cmp/cmp"
+	vaultSecretsManager "github.com/innovia/secrets-consumer-env/pkg/vault"
 	"github.com/spf13/viper"
 
 	kv "github.com/hashicorp/vault-plugin-secrets-kv"

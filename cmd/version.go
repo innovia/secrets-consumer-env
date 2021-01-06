@@ -3,7 +3,7 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/doitintl/secrets-consumer-env/pkg/version"
+	"github.com/innovia/secrets-consumer-env/pkg/version"
 	"github.com/spf13/cobra"
 )
 

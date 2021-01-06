@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/doitintl/secrets-consumer-env/cmd"
+	"github.com/innovia/secrets-consumer-env/cmd"
 	"github.com/spf13/cobra/doc"
 )
 

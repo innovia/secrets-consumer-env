@@ -16,7 +16,7 @@ limitations under the License.
 package main
 
 import (
-	"github.com/doitintl/secrets-consumer-env/cmd"
+	"github.com/innovia/secrets-consumer-env/cmd"
 )
 
 func main() {

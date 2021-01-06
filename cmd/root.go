@@ -23,8 +23,8 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/doitintl/secrets-consumer-env/pkg/injector"
-	"github.com/doitintl/secrets-consumer-env/pkg/version"
+	"github.com/innovia/secrets-consumer-env/pkg/injector"
+	"github.com/innovia/secrets-consumer-env/pkg/version"
 	"github.com/sirupsen/logrus"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"

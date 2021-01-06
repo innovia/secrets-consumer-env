@@ -21,7 +21,7 @@ import (
 	"os"
 	"path/filepath"
 
-	gcp "github.com/doitintl/secrets-consumer-env/pkg/gcp"
+	gcp "github.com/innovia/secrets-consumer-env/pkg/gcp"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"

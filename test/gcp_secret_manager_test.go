@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	gcpSecretsManager "github.com/doitintl/secrets-consumer-env/pkg/gcp"
 	"github.com/googleapis/gax-go/v2"
+	gcpSecretsManager "github.com/innovia/secrets-consumer-env/pkg/gcp"
 	"github.com/magiconair/properties/assert"
 	secretspb "google.golang.org/genproto/googleapis/cloud/secrets/v1beta1"
 )

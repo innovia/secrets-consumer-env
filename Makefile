@@ -1,12 +1,12 @@
 # Bump these on release
-VERSION_MAJOR ?= 0
-VERSION_MINOR ?= 2
+VERSION_MAJOR ?= 1
+VERSION_MINOR ?= 0
 VERSION_BUILD ?= 0
 VERSION_RC ?= ""
 RAW_VERSION=$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 VERSION ?= $(RAW_VERSION)$(VERSION_RC)
 
-DOCKER_REPO=doitintl/secrets-cosumer-env
+DOCKER_REPO=innovia/secrets-cosumer-env
 # Get git commit id
 COMMIT_NO := $(shell git rev-parse HEAD 2> /dev/null || true)
 COMMIT ?= $(if $(shell git status --porcelain --untracked-files=no),"${COMMIT_NO}-dirty","${COMMIT_NO}")
@@ -18,17 +18,17 @@ $(shell mkdir -p $(BUILD_DIR))
 OSARCH := "linux/amd64 linux/386 windows/amd64 windows/386 darwin/amd64 darwin/386"
 
 # Set the version and commit
-SECRETS_CONSUMER_ENV_LDFLAGS := -X github.com/doitintl/secrets-consumer-env/pkg/version.version=$(VERSION) -X github.com/doitintl/secrets-consumer-env/pkg/version.gitCommitID=$(COMMIT)
+SECRETS_CONSUMER_ENV_LDFLAGS := -X github.com/innovia/secrets-consumer-env/pkg/version.version=$(VERSION) -X github.com/innovia/secrets-consumer-env/pkg/version.gitCommitID=$(COMMIT)
 
 .PHONY: cross
 cross:
 	gox -osarch=$(OSARCH) -output "out/secrets-consumer-env-{{.OS}}-{{.Arch}}" -ldflags="$(SECRETS_CONSUMER_ENV_LDFLAGS)"
 
 docker-build:
-	docker build -t doitintl/secrets-consumer-env:$(VERSION) . --build-arg VERSION=$(VERSION) --build-arg COMMIT=$(COMMIT)
+	docker build -t innovia/secrets-consumer-env:$(VERSION) . --build-arg VERSION=$(VERSION) --build-arg COMMIT=$(COMMIT)
 
 docker-push:
-	docker push doitintl/secrets-consumer-env:$(VERSION)
+	docker push innovia/secrets-consumer-env:$(VERSION)
 
 up: docker-build docker-push
 
