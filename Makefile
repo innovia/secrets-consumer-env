@@ -3,10 +3,13 @@ VERSION_MAJOR ?= 1
 VERSION_MINOR ?= 0
 VERSION_BUILD ?= 0
 VERSION_RC ?= ""
+
 RAW_VERSION=$(VERSION_MAJOR).$(VERSION_MINOR).$(VERSION_BUILD)
 VERSION ?= $(RAW_VERSION)$(VERSION_RC)
 
-DOCKER_REPO=innovia/secrets-cosumer-env
+DOCKER_OWNER ?= innovia
+DOCKER_REPO=$(DOCKER_OWNER)/secrets-consumer-webhook
+
 # Get git commit id
 COMMIT_NO := $(shell git rev-parse HEAD 2> /dev/null || true)
 COMMIT ?= $(if $(shell git status --porcelain --untracked-files=no),"${COMMIT_NO}-dirty","${COMMIT_NO}")
@@ -32,9 +35,11 @@ docker-push:
 
 up: docker-build docker-push
 
-publish-latest: tag-latest ## Publish the `latest` tagged container
-	@echo 'publish latest to $(DOCKER_REPO)'
-	docker push $(DOCKER_REPO)/$(APP_NAME):latest
+publish-latest:  ## Publish the `latest` tagged container
+	@echo publish latest to $(DOCKER_REPO)
+	docker tag $(DOCKER_OWNER)/secrets-consumer-webhook:$(VERSION) $(DOCKER_OWNER)/secrets-consumer-webhook:latest
+	docker push $(DOCKER_REPO):latest
+
 
 .PHONY: clean
 clean:

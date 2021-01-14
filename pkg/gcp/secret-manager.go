@@ -10,7 +10,8 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	secretmanager "cloud.google.com/go/secretmanager/apiv1beta1"
-	secretspb "google.golang.org/genproto/googleapis/cloud/secrets/v1beta1"
+
+	secretmanagerpb "google.golang.org/genproto/googleapis/cloud/secretmanager/v1beta1"
 
 	gax "github.com/googleapis/gax-go/v2"
 	grpccodes "google.golang.org/grpc/codes"
@@ -41,11 +42,11 @@ type SecretManagerAccessRequestParams struct {
 
 // SecretManagerClient interface
 type SecretManagerClient interface {
-	AccessSecretVersion(ctx context.Context, req *secretspb.AccessSecretVersionRequest, opts ...gax.CallOption) (*secretspb.AccessSecretVersionResponse, error)
+	AccessSecretVersion(ctx context.Context, req *secretmanagerpb.AccessSecretVersionRequest, opts ...gax.CallOption) (*secretmanagerpb.AccessSecretVersionResponse, error)
 }
 
 // GetSecretData will fetch the secret from secret manager
-func GetSecretData(client SecretManagerClient, accessRequest *secretspb.AccessSecretVersionRequest) (*secretspb.SecretPayload, error) {
+func GetSecretData(client SecretManagerClient, accessRequest *secretmanagerpb.AccessSecretVersionRequest) (*secretmanagerpb.SecretPayload, error) {
 	ctx := context.Background()
 	resp, err := client.AccessSecretVersion(ctx, accessRequest)
 	if err != nil {
@@ -59,7 +60,7 @@ func GetSecretData(client SecretManagerClient, accessRequest *secretspb.AccessSe
 }
 
 // ExtractPayload decode JSON respose from secret data
-func ExtractPayload(payload secretspb.SecretPayload) (map[string]interface{}, error) {
+func ExtractPayload(payload secretmanagerpb.SecretPayload) (map[string]interface{}, error) {
 	var secretData map[string]interface{}
 	err := json.Unmarshal(payload.Data, &secretData)
 	if err != nil {
@@ -80,8 +81,8 @@ func NewSecretManagerClient() (*secretmanager.Client, error) {
 }
 
 // BuildAccessSecretRequest from params
-func BuildAccessSecretRequest(s *SecretManagerAccessRequestParams) (*secretspb.AccessSecretVersionRequest, error) {
-	accessRequest := &secretspb.AccessSecretVersionRequest{
+func BuildAccessSecretRequest(s *SecretManagerAccessRequestParams) (*secretmanagerpb.AccessSecretVersionRequest, error) {
+	accessRequest := &secretmanagerpb.AccessSecretVersionRequest{
 		Name: fmt.Sprintf("projects/%s/secrets/%s/versions/%s", s.Project, s.Name, s.Version),
 	}
 	return accessRequest, nil
