@@ -4,13 +4,14 @@ go 1.15
 
 require (
 	cloud.google.com/go v0.75.0
-	github.com/aws/aws-sdk-go v1.36.26
-	github.com/google/go-cmp v0.5.4
+	github.com/aws/aws-sdk-go v1.37.19
+	github.com/google/go-cmp v0.5.5
 	github.com/googleapis/gax-go/v2 v2.0.5
-	github.com/hashicorp/vault v1.6.1
-	github.com/hashicorp/vault-plugin-secrets-kv v0.7.0
-	github.com/hashicorp/vault/api v1.0.5-0.20201001211907-38d91b749c77
-	github.com/hashicorp/vault/sdk v0.1.14-0.20201214222404-d8fffe05d2f4
+	github.com/hashicorp/hcl v1.0.1-vault // indirect
+	github.com/hashicorp/vault v1.7.6
+	github.com/hashicorp/vault-plugin-secrets-kv v0.8.0
+	github.com/hashicorp/vault/api v1.1.1
+	github.com/hashicorp/vault/sdk v0.2.1
 	github.com/magiconair/properties v1.8.1
 	github.com/mitchellh/go-homedir v1.1.0
 	github.com/prometheus/common v0.11.1
