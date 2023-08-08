@@ -21,6 +21,6 @@ RUN go build -ldflags="-X github.com/innovia/secrets-consumer-env/pkg/version.ve
 RUN cp secrets-consumer-env /usr/local/bin/
 RUN chmod a+x /usr/local/bin/secrets-consumer-env
 
-FROM alpine
+FROM alpine:3.18.3
 
 COPY --from=builder /usr/local/bin/secrets-consumer-env /usr/local/bin/secrets-consumer-env
